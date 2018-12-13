@@ -33,6 +33,7 @@ FaqMdParser.dll -f "[input file path]" -p "[output dir]" -n "[output file name]"
 ```
 
 Two additonal flags are included:
+
 ***-o***: Overwrites the output file, if exists. Default behavior is to append to end of output file.
 ***-h***: Appends bolded headers to the content strings per tab pair.
 
