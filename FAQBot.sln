@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaqBot", "FaqBot\FaqBot.csproj", "{8F61B1E6-3BCE-43EC-B817-FEF3FC576A32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaqMdParser", "FaqMdParser\FaqMdParser.csproj", "{E8EEBEC6-84B8-4F71-9AAE-49427A568608}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F61B1E6-3BCE-43EC-B817-FEF3FC576A32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F61B1E6-3BCE-43EC-B817-FEF3FC576A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F61B1E6-3BCE-43EC-B817-FEF3FC576A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F61B1E6-3BCE-43EC-B817-FEF3FC576A32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8EEBEC6-84B8-4F71-9AAE-49427A568608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8EEBEC6-84B8-4F71-9AAE-49427A568608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8EEBEC6-84B8-4F71-9AAE-49427A568608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8EEBEC6-84B8-4F71-9AAE-49427A568608}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4296534-24CC-44E8-801D-00DA04646E9C}
+	EndGlobalSection
+EndGlobal
