@@ -34,32 +34,49 @@ namespace FaqBot.Controllers
         {
             var replyActivity = activity.CreateReply();
 
-            try
-            {
-                // route activity text to QnA service
-                var questionResponse = await qNaRepo.GenerateAnswer(
-                    new AskQuestionRequest
-                    {
-                        Question = activity.Text,
-                        Top = 1
-                    },
-                    getQnaServiceDetails());
-            
-                replyActivity.Text = questionResponse.Answers.FirstOrDefault().Answer;
-            }
-            catch
-            {
-                replyActivity.Text = "Uh oh. Brain freeze! Try asking me again :)";
-            }
-
             this.connectorClient = new ConnectorClient(
-                 new Uri(activity.ServiceUrl),
-                 ConfigurationManager.AppSettings[MicrosoftAppCredentials.MicrosoftAppIdKey],
-                 ConfigurationManager.AppSettings[MicrosoftAppCredentials.MicrosoftAppPasswordKey]);
+                  new Uri(activity.ServiceUrl),
+                  ConfigurationManager.AppSettings[MicrosoftAppCredentials.MicrosoftAppIdKey],
+                  ConfigurationManager.AppSettings[MicrosoftAppCredentials.MicrosoftAppPasswordKey]);
 
-            await connectorClient.Conversations.SendToConversationWithRetriesAsync(
-                 replyActivity,
-                activity.Conversation.Id);
+            if (activity.Type == ActivityTypes.ConversationUpdate)
+            {
+                var membersAdded = activity.MembersAdded.ToList();
+                if (membersAdded.Any() && membersAdded.Exists(m => m.Id == activity.Recipient.Id))
+                {           
+                    replyActivity.Text = "Hi there, I'm an FAQ Bot. " +
+                        "I'm here to help you answer common questions. Ask me a question!";
+
+                    await connectorClient.Conversations.SendToConversationWithRetriesAsync(
+                        replyActivity,
+                        activity.Conversation.Id);
+                }
+            }
+
+            if (activity.Type == ActivityTypes.Message)
+            {
+                try
+                {
+                    // route activity text to QnA service
+                    var questionResponse = await qNaRepo.GenerateAnswer(
+                        new AskQuestionRequest
+                        {
+                            Question = activity.Text,
+                            Top = 1
+                        },
+                        getQnaServiceDetails());
+
+                    replyActivity.Text = questionResponse.Answers.FirstOrDefault().Answer;
+                }
+                catch
+                {
+                    replyActivity.Text = "Uh oh. Brain freeze! Try asking me again :)";
+                }
+
+                await connectorClient.Conversations.SendToConversationWithRetriesAsync(
+                     replyActivity,
+                    activity.Conversation.Id);
+            }
 
             return Ok();
         }
