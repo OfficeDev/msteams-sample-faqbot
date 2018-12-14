@@ -96,7 +96,6 @@ namespace FaqMdParser
                     var lineTrimmed = line.Trim();
 
                     // check if line starts with a h1 or h2 header hash
-                    // length check makes sure the header has a value so that a question key can be parsed
                     if (lineTrimmed.StartsWith("#", StringComparison.OrdinalIgnoreCase)
                         || lineTrimmed.StartsWith("##", StringComparison.OrdinalIgnoreCase))
                     {
