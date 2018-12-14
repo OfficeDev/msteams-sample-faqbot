@@ -27,13 +27,13 @@ Contains code for a simple command line application that helps parse out markdow
 7. Talk to bot
 
 ### Using FaqMdParser
-Natively, Knowledge Base doesn't accept .md files. If you have files written in markdown (ex. a FAQ in GitHub),  they need to be converted into a format accepted by the Knowledge Base. You could use a tool, such as Pandoc, to convert a .md file into .pdf, .docx, or another format that the Knowledge Base accepts. However, this can lead to imprecise outcomes due to the semi-structure nature of the document. An alternative is to convert the .md files into a structured format so that there's no ambiguity when uploaded to the Knowledge Base service. The FaqMdParser helps convert the content of an .md file into a .tsv with each line being a tab separated key and value pair. It uses the # and ## header tags as keys and the content between headers as values. If there is no content below a header, the parser will ignore it.
+Natively, Knowledge Base doesn't accept .md files. If you have files written in markdown (ex. a FAQ in GitHub),  they need to be converted into a format accepted by the Knowledge Base. You could use a tool, such as Pandoc, to convert a .md file into .pdf, .docx, or another format that the Knowledge Base accepts. However, this can lead to imprecise outcomes due to the semi-structure nature of the document. An alternative is to convert the .md files into a structured format so that there's no ambiguity when uploaded to the Knowledge Base service. The FaqMdParser helps convert the content of an .md file into a .tsv with each line being a tab separated key and value pair. It uses the # and ## header tags as keys and the content between headers as values.
 
 Multiple input files can be appended into a single output file. This is the default behavior, as long as the output dir and file are the same.
 
 To use the parser, build the project, navigate to the output bin, and run the following command:
 ```
-FaqMdParser.dll -f "[input file path]" -p "[output dir]" -n "[output file name]"
+dotnet FaqMdParser.dll -f "[input file path]" -p "[output dir]" -n "[output file name]"
 ```
 
 Two additonal flags are included:
